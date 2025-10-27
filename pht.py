@@ -40,18 +40,14 @@ class StrokePredictor(nn.Module):
     def __init__(self, input_size):
         super(StrokePredictor, self).__init__()
         self.layers = nn.Sequential(
-            nn.Linear(input_size, 128),
-            nn.ReLU(),
-            nn.BatchNorm1d(128),
-            nn.Dropout(0.3),
-            nn.Linear(128, 64),
+            nn.Linear(input_size, 64),
             nn.ReLU(),
             nn.BatchNorm1d(64),
-            nn.Dropout(0.2),
+            nn.Dropout(0.3),
             nn.Linear(64, 32),
             nn.ReLU(),
             nn.BatchNorm1d(32),
-            nn.Dropout(0.1),
+            nn.Dropout(0.2),
             nn.Linear(32, 1),
             nn.Sigmoid()  # 二分类问题使用sigmoid激活
         )
